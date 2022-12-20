@@ -73,12 +73,14 @@ impl Terminal {
     fn record_history(&mut self) -> String {
         let index = self.history_index;
         let history = &mut self.history;
+        let s = "";
         if index != 0 {
             history[0] = history[index].clone();
+            let s = &history[index].buffer;
         } else if history[0].buffer.is_empty() {
             history.remove(0);
         }
-        history[index].buffer.clone()
+        s.to_string()
     }
 
     fn line_init(&mut self) {
